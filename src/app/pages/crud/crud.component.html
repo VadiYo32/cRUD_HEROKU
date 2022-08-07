@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="col-12">
+    <div class="card mt-5">
+        <div class="card-header">Empresas Registradas
+         
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Pais</th>
+                <th scope="col">Actualizar</th>
+                <th scope="col">Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let empresa of empresas; let i = index">
+                <th scope="row">{{empresa._id}}</th>
+                <td>{{empresa.strNombre}} {{empresa.strRazonSocial}} {{empresa.strRFC}} {{empresa.strDireccion}}{{empresa.strUrlLogo}}</td>
+                <td>{{empresa.strPais}}</td>
+                <td> 
+                  <button type="button" class="btn btn-info" (click)="showUpdate(empresa._id)"><i class="fa-thin fa-check"></i></button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-danger" (click)="eliminar(empresa)"><i class="fa fa-trash"></i></button>
+                </td>
+           
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+
+<router-outlet></router-outlet>  

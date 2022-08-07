@@ -1,0 +1,67 @@
+<div class="card mt-5 p-3 mb-2 bg-dark text-white">
+    <div class="card-header">Registrar Empresa</div>
+    <div class="card-body">
+      <form class="row g-3" (ngSubmit)="registrarUsuario(forma)" #forma="ngForm">
+
+        <div class="mb-3">
+          <label for="label-ID" class="form-label">ID de tu empresa</label>
+          <input #inputStrID="ngModel" type="text" [ngClass]="{ 'is-invalid': inputStrID.touched && inputStrID.hasError('required') }" [(ngModel)]="empresa.strNombre " name="strID" class="form-control" id="strID" placeholder="Ingresa ID" required>
+          <div class="valid-feedback"></div>
+            <div class="invalid-feedback">
+              El Campo es Requerido
+            </div>
+        </div>
+
+          <div class="col-md-6">
+            <label for="label-strNombre" class="form-label">Nombre*</label>
+            <input #inputStrNombre="ngModel" type="text" [ngClass]="{ 'is-invalid': inputStrNombre.touched && inputStrNombre.hasError('required') }" [(ngModel)]="empresa.strNombre" name="strNombre" class="form-control" id="strNombre" placeholder="Ingresa Nombre" required>
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback">
+              El Campo es Requerido
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="label-strRazonSocial" class="form-label">Razon Social*</label>
+            <div class="input-group has-validation">
+              <input #inputStrPrimerApellido="ngModel" type="text" [ngClass]="{ 'is-invalid': inputStrPrimerApellido.touched && inputStrPrimerApellido.hasError('required') }" [(ngModel)]="empresa.strRazonSocial" name="strRazonSocial" class="form-control" id="strRazonSocial" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" placeholder="Ingrese Razon Social" required>
+              <div class="valid-feedback"></div>
+              <div class="invalid-feedback">
+                El Campo es Requerido
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="label-strRFC" class="form-label">RFC</label>
+            <input type="text" [(ngModel)]="empresa.strRFC" name="strRFC" class="form-control" id="strRFC" aria-describedby="validationServer03Feedback" placeholder="Ingrese RFC" required>
+            <div class="valid-feedback"></div>
+          </div>
+          <div class="col-md-6">
+            <label for="label-strDireccion" class="form-label">Dirección</label>
+            <input type="text" [(ngModel)]="empresa.strDireccion" name="strDireccion" class="form-control" id="strDireccion" aria-describedby="validationServer03Feedback" placeholder="Ingrese su Dirección" required>
+            <div class="valid-feedback"></div>
+          </div>
+          <div class="col-md-6">
+            <label for="label-strUrlLogo" class="form-label">Logo Url</label>
+            <input type="text" [(ngModel)]="empresa.strUrlLogo" name="strUrlLogo" class="form-control" id="strUrlLogo" aria-describedby="validationServer03Feedback" placeholder="Ingrese Url de logo" required>
+            <div class="valid-feedback"></div>
+          </div>
+          <div class="col-md-6">
+            <label for="label-strPais" class="form-label">Pais*</label>
+            <input  #inputStrPais="ngModel" type="text" [ngClass]="{ 'is-invalid': inputStrPais.touched && inputStrPais.hasError('required') }" [(ngModel)]="empresa.strPais" class="form-control" name="strPais" id="strPais" aria-describedby="validationServer05Feedback" placeholder="Ingrese Pais" required>
+            
+            <div class="valid-feedback"></div>
+            <div id="validationServer05Feedback" class="invalid-feedback">
+              Porfavor ingrese un país válido
+            </div>
+            
+          </div>
+
+          <div class="col-12">
+            
+            <button class="btn btn-primary" type="submit" [disabled]="forma.invalid">Actualizar</button>
+            <button style="margin-left: 1em;" class="btn btn-danger" type="button" (click)="limpiarForma(forma)">Limpiar</button>
+          </div>
+        </form>
+  </div>
+</div>
+<router-outlet></router-outlet>  
