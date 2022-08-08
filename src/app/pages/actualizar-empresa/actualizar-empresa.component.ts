@@ -25,30 +25,26 @@ export class ActualizarEmpresaComponent implements OnInit {
     })
     .catch(() => {});
   }
-  registrarUsuario(forma: NgForm)
-  {
-    this.EmpresaService.postUsuario(this.empresa)
-    .then((response: any) => {
-      Swal.fire
-      ({
+ 
+  
+  actualizarEmpresa(forma: NgForm){
+    this.EmpresaService.putUsuarios(this.empresa, this.idEmpresa)
+    .then((res: any) => {
+      Swal.fire({
         icon: "success",
-        text: "Se registró la empresa exitosamente"
+        text: "Se actualizó los datos correctamente"
       });
       forma.reset();
-    })
-    .catch((error: any) => {
-      Swal.fire
-      ({
+
+      // Trigger para accionar reloadTable() de crud.component.ts
+      this.emiterActualizacion.emit();
+    }).catch((err) => {
+      Swal.fire({
         icon: "error",
-        text: "Ha habido un error al registrar la empresa"
+        text: "Error al actualizar datos"
       });
     });
   }
-  isShown: boolean = true;
-  actualizarUsuario(idEmpresa: any){
-    this.idEmpresa = idEmpresa;
-  this.isShown = true;
-}
 limpiarForma(forma: NgForm)
 {
   forma.reset();
